@@ -8,7 +8,7 @@ CLASSES = \
 	./src/ASTNode.java \
 	./src/SyntaxKind.java \
 	./src/SyntaxToken.java \
-	./src/BinaryTreeNode.java \
+	./src/TreeNode.java \
 	./src/ParserBottomUpTree.java \
 	./src/Lexer.java \
 	./src/winzigc.java \

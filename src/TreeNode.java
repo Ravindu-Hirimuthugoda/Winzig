@@ -1,19 +1,19 @@
-public class BinaryTreeNode{
+public class TreeNode{
 
     private String node_label;
-    private BinaryTreeNode left;
-    private BinaryTreeNode right;
+    private TreeNode left;
+    private TreeNode right;
     private int childCount;
 
-    BinaryTreeNode(String node_label){
+    TreeNode(String node_label){
         this.node_label = node_label;
     }
 
-    public void setLeftChild(BinaryTreeNode node) {
+    public void setLeftChild(TreeNode node) {
         left = node;
     }
 
-    public void setRightChild(BinaryTreeNode node) {
+    public void setRightChild(TreeNode node) {
         right = node;
     }
 
@@ -21,7 +21,6 @@ public class BinaryTreeNode{
         childCount = c;
     }
 
-    // Pre Order Traverse with indented printing
     public void PreOrderTraverse(int indentSize){
         for(int i = 0 ; i < indentSize; i++ ) System.out.print(". ");
         System.out.print(this.node_label);

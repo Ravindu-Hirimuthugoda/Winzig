@@ -1,5 +1,4 @@
 public enum SyntaxKind {
-    // for the lexer
     IdentifierToken,
     IntegerToken,
     WhiteSpaceToken,

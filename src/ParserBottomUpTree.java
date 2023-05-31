@@ -3,7 +3,7 @@ import java.util.Stack;
 
 public class ParserBottomUpTree {
     private Stack<ASTNode> treeStack;
-    private Stack<BinaryTreeNode> binaryTreeStack;
+    private Stack<TreeNode> binaryTreeStack;
     private List<SyntaxToken> tokenStream;
     private int tokenIndex;
     SyntaxToken nextToken;
@@ -20,7 +20,6 @@ public class ParserBottomUpTree {
         throw new Error();
     }
 
-    // set the next token and increment the index
     void getNextToken(){
         nextToken = tokenStream.get(tokenIndex);
         tokenIndex++;
@@ -35,7 +34,6 @@ public class ParserBottomUpTree {
         winZigAST();
     }
 
-    // look what's the next token without incrementing the token index
     public SyntaxToken peekToken(){
         return tokenStream.get(tokenIndex);
     }
@@ -54,12 +52,7 @@ public class ParserBottomUpTree {
 
         constructTree("program" ,7);
 
-//        for(ASTNode node : treeStack){
-//            node.DFTraverse(0);
-//            System.out.println("---------------------");
-//        }
-
-        for(BinaryTreeNode node : binaryTreeStack){
+        for(TreeNode node : binaryTreeStack){
             node.PreOrderTraverse(0);
         }
 
@@ -95,7 +88,6 @@ public class ParserBottomUpTree {
     }
 
     void ConstValue(){
-        // skip <char> or <integer> but create a node for <identifier>
         if(nextToken.type.equals("<char>") || nextToken.type.equals("<integer>") ){
             read(nextToken.kind);
         }
@@ -301,7 +293,6 @@ public class ParserBottomUpTree {
                 read("(");
                 OutEXp();
                 count = 1;
-                // out exp list
                 while(nextToken.type == ","){
                     read(",");
                     OutEXp();
@@ -559,7 +550,6 @@ public class ParserBottomUpTree {
             case "<char>":
                 read(SyntaxKind.CharToken); break;
             case "<integer>":
-//                System.out.println(nextToken.type + " "+nextToken.text);
                 read(SyntaxKind.IntegerToken); break;
             case "eof":
                 read("eof");
@@ -664,8 +654,8 @@ public class ParserBottomUpTree {
             throw new Error();
         }
 
-        BinaryTreeNode node_1 = new BinaryTreeNode(nextToken.type);
-        BinaryTreeNode node_2 = new BinaryTreeNode(nextToken.text);
+        TreeNode node_1 = new TreeNode(nextToken.type);
+        TreeNode node_2 = new TreeNode(nextToken.text);
 
         node_1.setLeftChild(node_2);
 
@@ -678,11 +668,11 @@ public class ParserBottomUpTree {
 
 
     void constructTree(String node_label, int count){
-        BinaryTreeNode node = new BinaryTreeNode(node_label);
-        BinaryTreeNode p = null;
+        TreeNode node = new TreeNode(node_label);
+        TreeNode p = null;
 
         for(int j = 0; j < count; j++){
-            BinaryTreeNode c = binaryTreeStack.pop();
+            TreeNode c = binaryTreeStack.pop();
             if(p != null){
                 c.setRightChild(p);
             }
