@@ -5,13 +5,13 @@ JC = javac
 		$(JC) $(JFLAGS) $*.java
 
 CLASSES = \
-	./ASTNode.java \
-	./SyntaxKind.java \
-	./SyntaxToken.java \
-	./BinaryTreeNode.java \
-	./ParserBottomUpTree.java \
-	./Lexer.java \
-	./Winzig.java \
+	./src/ASTNode.java \
+	./src/SyntaxKind.java \
+	./src/SyntaxToken.java \
+	./src/BinaryTreeNode.java \
+	./src/ParserBottomUpTree.java \
+	./src/Lexer.java \
+	./src/winzigc.java \
 
 default: classes
 
